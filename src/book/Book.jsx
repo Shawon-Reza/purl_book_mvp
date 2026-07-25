@@ -17,6 +17,7 @@ import Contact from "../pages/Contact";
 import Hours from "../pages/Hours";
 
 import "../styles/book.css";
+import useScreenSize from "./useScreenSize";
 
 // Single source of truth for all pages
 const pagesConfig = [
@@ -42,6 +43,11 @@ function Book() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const isMountedRef = useRef(false);
   const lastFlippedRef = useRef(null);
+
+
+  // ============== SCreen Size Hook ==============
+  const { bookWidth, bookHeight } = useScreenSize();
+  console.log("Screen =====", { bookWidth, bookHeight });
 
   // On mount, navigate to the correct page index
   useEffect(() => {
@@ -93,7 +99,7 @@ function Book() {
   }, [navigate]);
 
   return (
-    <div className="book-wrapper">
+    <div className="book-wrapper bg-[#EBE7DB]!">
       {/* Floating Navigation */}
       <FloatingNav
         isOpen={isNavOpen}
@@ -104,8 +110,8 @@ function Book() {
 
       <HTMLFlipBook
         ref={bookRef}
-        width={530}
-        height={706}
+        width={bookWidth}
+        height={bookHeight}
         size="stretch"
         minWidth={300}
         maxWidth={980}
@@ -127,9 +133,11 @@ function Book() {
         swipeDistance={30}
         showPageCorners={true}
         disableFlipByClick={false}
+        className="bg-[#EAE6DA] h-full! w-full "
+
       >
         {pagesConfig.map(({ id, Component }) => (
-          <Component key={id} />
+          <Component key={id} className="shadow-2xl " />
         ))}
       </HTMLFlipBook>
     </div>

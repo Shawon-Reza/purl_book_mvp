@@ -3,6 +3,7 @@ import React from "react";
 const About = React.forwardRef(function About(props, ref) {
   return (
     <div className="page" ref={ref}>
+
       <div className="page-content">
         <header className="page-header">
           <span className="brand-label">Our Story</span>
