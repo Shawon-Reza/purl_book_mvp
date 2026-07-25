@@ -1,10 +1,13 @@
-import { createBrowserRouter } from "react-router";
-import Test from "../features/Test";
-
+import { createBrowserRouter, Navigate } from "react-router";
+import Book from "../book/Book";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Test />,
+    element: <Navigate to="/cover" replace />,
+  },
+  {
+    path: "/:pageId",
+    element: <Book />,
   },
 ]);
