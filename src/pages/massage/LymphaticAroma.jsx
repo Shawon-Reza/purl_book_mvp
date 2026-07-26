@@ -36,12 +36,12 @@ const MassageLymphaticAroma = React.forwardRef(function MassageLymphaticAroma(pr
               </div>
 
               <article className=" rounded-none border-0 bg-transparent p-0 text-left">
-                <h2 className="text-[1.15rem] font-semibold leading-tight text-[color:var(--ink)] sm:text-[1.35rem] md:text-[1.55rem]  md:text-lg! lg:text-xl! xl:text-2xl! 2xl:text-3xl! ">
+                <h2 className="text-[1.15rem] font-semibold leading-tight text-[color:var(--ink)] sm:text-[1.35rem] md:text-[1.55rem]  md:text-md! lg:text-lg! xl:text-xl! 2xl:text-2xl! ">
                   Lymphatic Drainage
                 </h2>
                 <div className="mt-2 space-y-3 text-[0.86rem] leading-6 text-[color:var(--ink)] sm:text-[0.95rem] sm:leading-7 md:text-[1rem] lg:text-2xl!">
 
-                  <p className="!m-0 md:text-md! lg:text-lg! xl:text-xl! 2xl:text-2xl!">
+                  <p className="!m-0 md:text-sm! lg:text-md! xl:text-lg! 2xl:text-xl!">
                     Is a gentle, yet powerful technique aimed at stimulating the lymphatic system to encourage the removal of toxins, waste, and excess fluids from the body. It is particularly useful in boosting immune function, reducing swelling, and enhancing overall health. Great for people pre/post surgery and those living sedentary lifestyles.
                   </p>
 
@@ -54,11 +54,11 @@ const MassageLymphaticAroma = React.forwardRef(function MassageLymphaticAroma(pr
             <section className="grid min-h-0 grid-cols-1 items-start gap-4 lg:grid-cols-[60%_40%] lg:items-center">
 
               <article className=" rounded-none border-0 bg-transparent p-0 text-left lg:col-start-1 items-center align-center">
-                <h2 className="text-[1.15rem] font-semibold leading-tight text-[color:var(--ink)] sm:text-[1.35rem] md:text-[1.55rem] lg:text-[1.75rem]   md:text-lg! lg:text-xl! xl:text-2xl! 2xl:text-3xl!">
+                <h2 className="text-[1.15rem] font-semibold leading-tight text-[color:var(--ink)] sm:text-[1.35rem] md:text-[1.55rem]  md:text-md! lg:text-lg! xl:text-xl! 2xl:text-2xl!">
                   Aromatherapy and Hot Stones
                 </h2>
                 <div className="mt-2 space-y-3 text-[0.86rem] leading-6 text-[color:var(--ink)] sm:text-[0.95rem] sm:leading-7 md:text-[1rem]">
-                  <p className="!m-0 md:text-md! lg:text-lg! xl:text-xl! 2xl:text-2xl!">
+                  <p className="!m-0 md:text-sm! lg:text-md! xl:text-lg! 2xl:text-xl!">
                     Is a holistic therapy that blends the benefits of massage with the therapeutic properties of essential oils. Hot stones work to ease muscle tension and pain, while essential oils target specific physical or emotional concerns. The combination of aromatherapy and heat promotes a deep sense of relaxation, calming both the body and mind.
                   </p>
 

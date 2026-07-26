@@ -65,9 +65,9 @@ function MassagePageLayout({ title, footerRight, details }, ref) {
                 return (
                   <article
                     key={panel.key}
-                    className="flex h-full flex-col rounded-[1.25rem] border border-amber-200/90 bg-[rgba(250,245,235,0.86)] p-2! shadow-[0_16px_30px_rgba(83,56,29,0.08)] backdrop-blur-[1px] md:p-5!"
+                    className="flex h-full flex-col rounded-[1.25rem] border border-amber-200/90 bg-[rgba(250,245,235,0.86)] p-2! shadow-[0_16px_30px_rgba(83,56,29,0.08)] backdrop-blur-[1px] md:p-5! overflow-hidden"
                   >
-                    <h2 className="mb- !text-[1.05rem] font-semibold  !text-[color:var(--ink)] md:!text-[1rem] 2xl:text-3xl! xl:text-xl! lg:text-lg!">
+                    <h2 className="mb- !text-[1.05rem] font-semibold  !text-[color:var(--ink)] md:text-sm! lg:text-md! xl:text-lg! 2xl:text-xl!">
                       {detail.title}
                     </h2>
 
@@ -75,7 +75,7 @@ function MassagePageLayout({ title, footerRight, details }, ref) {
                       {detail.paragraphs.map((paragraph) => (
                         <p
                           key={paragraph}
-                          className="!m-0 !text-[0.75rem] !leading-5  md:!text-[0.85rem] 2xl:text-xl! xl:text-lg! md:!leading-6 lg:text-md!"
+                          className="!m-0 !text-[0.75rem] !leading-5  md:text-sm! lg:text-md! xl:text-lg! 2xl:text-xl! "
                         >
                           {paragraph}
                         </p>
@@ -83,7 +83,7 @@ function MassagePageLayout({ title, footerRight, details }, ref) {
                     </div>
 
                     {detail.note ? (
-                      <p className="mt-auto  !mb-0 !text-[0.8rem] italic !leading-6 !text-[color:var(--gold)] md:!text-[0.88rem] xl:text-lg! 2xl:text-xl! ">
+                      <p className="mt-auto   !mb-0 !text-[0.8rem] italic !leading-6 !text-[color:var(--gold)] mt-1!  md:text-xs! lg:text-sm! xl:text-md! 2xl:text-lg! ">
                         {detail.note}
                       </p>
                     ) : null}

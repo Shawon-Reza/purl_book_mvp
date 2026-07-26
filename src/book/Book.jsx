@@ -111,7 +111,7 @@ function Book() {
         currentPageId={pageId}
       />
 
-      
+
 
       <HTMLFlipBook
         ref={bookRef}
@@ -127,7 +127,7 @@ function Book() {
         mobileScrollSupport={false}
         onFlip={handleFlip}
         onInit={handleInit}
-        className="purls-book"
+
         drawShadow={true}
         flippingTime={800}
         usePortrait={true}
@@ -138,7 +138,7 @@ function Book() {
         swipeDistance={30}
         showPageCorners={true}
         disableFlipByClick={false}
-        className="bg-[#EAE6DA] h-full! w-full "
+        className="bg-[#EAE6DA] h-full! w-full purls-book"
 
       >
         {pagesConfig.map(({ id, Component }) => (

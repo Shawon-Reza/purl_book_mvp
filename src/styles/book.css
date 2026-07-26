@@ -324,8 +324,7 @@
    COVER PAGE
 =================================================== */
 .cover-page {
-  background-image: url('/assets/cover-bg.jpg') !important;
-  /* background-image: url('/assets/cover-bg.jpg') !important; */
+  background-image: url('../assets/purl_cover.png') !important;
   background-size: cover !important;
   background-position: center !important;
 }
