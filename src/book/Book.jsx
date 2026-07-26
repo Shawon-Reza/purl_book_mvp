@@ -18,20 +18,21 @@ import Hours from "../pages/Hours";
 
 import "../styles/book.css";
 import useScreenSize from "./useScreenSize";
+import useIsMobile from "./useIsMobile";
 
 // Single source of truth for all pages
 const pagesConfig = [
-  { id: "cover",                          Component: Cover },
-  { id: "about",                          Component: About },
-  { id: "massage-pricing",               Component: MassagePricing },
-  { id: "massage-remedial-deep",         Component: MassageRemedialDeep },
-  { id: "massage-sports-pregnancy",      Component: MassageSportsPregnancy },
-  { id: "massage-lymphatic-aroma",       Component: MassageLymphaticAroma },
-  { id: "massage-child-indian",          Component: MassageChildIndian },
-  { id: "massage-thai-aged",             Component: MassageThaiAged },
+  { id: "cover", Component: Cover },
+  { id: "about", Component: About },
+  { id: "massage-pricing", Component: MassagePricing },
+  { id: "massage-remedial-deep", Component: MassageRemedialDeep },
+  { id: "massage-sports-pregnancy", Component: MassageSportsPregnancy },
+  { id: "massage-lymphatic-aroma", Component: MassageLymphaticAroma },
+  { id: "massage-child-indian", Component: MassageChildIndian },
+  { id: "massage-thai-aged", Component: MassageThaiAged },
   { id: "massage-palliative-bereavement", Component: MassagePalliativeBereavement },
-  { id: "contact",                        Component: Contact },
-  { id: "hours",                          Component: Hours },
+  { id: "contact", Component: Contact },
+  { id: "hours", Component: Hours },
 ];
 
 const getPageIndex = (id) => pagesConfig.findIndex((p) => p.id === id);
@@ -46,6 +47,8 @@ function Book() {
 
 
   // ============== SCreen Size Hook ==============
+  const isMobile = useIsMobile(640); // treats < 640px as mobile
+  console.log("Mobile =======", isMobile)
   const { bookWidth, bookHeight } = useScreenSize();
   console.log("Screen =====", { bookWidth, bookHeight });
 
@@ -107,6 +110,8 @@ function Book() {
         onNavigate={goTo}
         currentPageId={pageId}
       />
+
+      
 
       <HTMLFlipBook
         ref={bookRef}

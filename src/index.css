@@ -18,16 +18,16 @@ html, body, #root {
 
 /* ====================== Custom Font ====================== */
 @font-face {
-  font-family: 'customfont';
-  src: url('./assets/fonts/Sedan-Regular.ttf') format('truetype');
+  font-family: 'Caveat';
+  src: url('./assets/fonts/Caveat-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --font-serif: 'Playfair Display', 'customfont', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Lato', 'customfont', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Caveat', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Caveat', ui-sans-serif, system-ui, sans-serif;
 
   --ink: #2a1f14;
   --ink-light: #4a3728;

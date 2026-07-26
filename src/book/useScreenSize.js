@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 // 👉 CHANGE THESE VALUES AS YOU LIKE
 // ============================================
 const sizes = {
-  xs:  { bookWidth: 280, bookHeight: 400 },  // mobile ( < 640px )
+  xs:  { bookWidth: 400, bookHeight: 800 },  // mobile ( < 640px )
   sm:  { bookWidth: 320, bookHeight: 460 },  // ≥ 640px
-  md:  { bookWidth: 380, bookHeight: 640 },  // ≥ 768px
-  lg:  { bookWidth: 410, bookHeight: 550 },  // ≥ 1024px
-  xl:  { bookWidth: 620, bookHeight: 720 },  // ≥ 1280px
+  md:  { bookWidth: 380, bookHeight: 700 },  // ≥ 768px
+  lg:  { bookWidth: 410, bookHeight: 700 },  // ≥ 1024px
+  xl:  { bookWidth: 620, bookHeight: 800 },  // ≥ 1280px
   "2xl": { bookWidth: 600, bookHeight: 610 }, // ≥ 1536px
 };
 
