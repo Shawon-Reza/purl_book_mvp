@@ -1,0 +1,645 @@
+/* ===================================================
+   MOBILE BOOK — react-pageflip portrait mode
+=================================================== */
+
+/* ── Wrapper (full-screen dark stage) ─────────────── */
+.mb-wrapper {
+  position: fixed;
+  inset: 0;
+  /* background: radial-gradient(ellipse at 30% 20%, #1e1209 0%, #0d0905 55%, #000 100%); */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+}
+
+/* ── Book area (HTMLFlipBook lives here) ──────────── */
+.mb-book-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+  overflow: hidden;
+  /* padding: 6px 0 0; */
+}
+
+/* Shadow/glow on the flipbook itself */
+.mb-flipbook {
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.75),
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* ── Flip page — the root element react-pageflip refs ─ */
+.mb-flip-page {
+  background-color: var(--paper);
+  background-image: url('/assets/textures/paper-texture.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Warm paper tint overlay */
+.mb-flip-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 237, 224, 0.52);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Cover page overrides ─────────────────────────── */
+.mb-cover-page {
+  background-image: url('../assets/purl_cover.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.mb-cover-page::before {
+  background: rgba(10, 8, 4, 0.55) !important;
+}
+
+/* ── Inner content wrapper ────────────────────────── */
+.mb-flip-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Cover inner has no padding (full bleed) */
+.mb-cover-inner {
+  padding: 0;
+  justify-content: space-between;
+}
+
+/* ── Cover content ────────────────────────────────── */
+.mb-cover-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 24px 0;
+  color: #f5ede0;
+}
+
+.mb-cover-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.mb-cover-title {
+  font-family: var(--font-serif);
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #f0e6d0;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+  margin: 0 0 8px;
+}
+
+.mb-cover-gold-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+  margin: 12px auto;
+}
+
+.mb-cover-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: rgba(245, 237, 224, 0.75);
+  letter-spacing: 0.04em;
+  margin: 0 0 22px;
+}
+
+.mb-cover-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.mb-cover-services span {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.6);
+  padding: 5px 10px;
+  border: 1px solid rgba(184, 134, 11, 0.4);
+  border-radius: 3px;
+}
+
+.mb-cover-footer {
+  font-size: 0.54rem;
+  letter-spacing: 0.15em;
+  color: rgba(184, 134, 11, 0.65);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 24px 18px;
+  flex-shrink: 0;
+}
+
+/* ── Card subtitle (gold label above title) ───────── */
+.mb-card-subtitle {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Card title ───────────────────────────────────── */
+.mb-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0 0 8px;
+  flex-shrink: 0;
+}
+
+/* ── Gold divider ─────────────────────────────────── */
+.mb-card-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.mb-card-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.mb-card-divider-star {
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+/* ── Massage image ────────────────────────────────── */
+.mb-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 10px;
+  /* box-shadow: 0 6px 20px rgba(70, 44, 20, 0.2); */
+}
+
+.mb-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mb-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(245, 237, 224, 0.45) 100%);
+  border-radius: 12px;
+}
+
+/* ── Body paragraphs ──────────────────────────────── */
+.mb-card-paragraphs {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.mb-card-paragraphs::-webkit-scrollbar {
+  display: none;
+}
+
+.mb-card-paragraphs p {
+  /* font-size: 0.99rem; */
+  line-height: 1.65;
+  color: var(--ink-light);
+  margin: 0 0 8px;
+}
+
+.mb-card-paragraphs p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Gold note ────────────────────────────────────── */
+.mb-card-note {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.5;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(184, 134, 11, 0.2);
+  flex-shrink: 0;
+}
+
+/* ── Card footer ──────────────────────────────────── */
+.mb-card-footer {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid rgba(184, 134, 11, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── Generic body text ────────────────────────────── */
+.mb-body-text {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── About header ─────────────────────────────────── */
+.mb-about-header {
+  text-align: center;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.mb-about-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 3px 0 8px;
+}
+
+.mb-about-intro {
+  font-family: var(--font-serif);
+  font-style: italic;
+
+  color: var(--ink);
+  line-height: 1.65;
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.mb-about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.mb-about-pillar {
+  text-align: center;
+  padding: 10px 5px;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+}
+
+.mb-about-pillar-icon {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mb-about-pillar h3 {
+  font-family: var(--font-serif);
+  /* font-size: 0.68rem; */
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 3px;
+  line-height: 1.2;
+}
+
+.mb-about-pillar p {
+  /* font-size: 0.62rem; */
+  color: var(--ink-light);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ── Pricing ──────────────────────────────────────── */
+.mb-pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.mb-price-tile {
+  text-align: center;
+  background: linear-gradient(160deg, rgba(212, 168, 67, 0.12) 0%, rgba(255, 255, 255, 0.3) 100%);
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  border-radius: 10px;
+  padding: 10px 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mb-price-tile.featured {
+  background: linear-gradient(160deg, rgba(184, 134, 11, 0.22) 0%, rgba(212, 168, 67, 0.12) 100%);
+  border-color: var(--gold);
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(184, 134, 11, 0.22);
+}
+
+.mb-price-tile.featured::after {
+  content: 'POPULAR';
+  position: absolute;
+  top: 5px;
+  right: -16px;
+  background: var(--gold);
+  color: white;
+  font-size: 0.4rem;
+  letter-spacing: 0.1em;
+  padding: 2px 20px;
+  transform: rotate(45deg);
+}
+
+.mb-price-tile .duration {
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.mb-price-tile .amount {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  display: block;
+}
+
+.mb-price-tile .currency {
+  font-size: 0.85rem;
+  vertical-align: top;
+  line-height: 1.75;
+  color: var(--gold);
+}
+
+.mb-pricing-note {
+  font-size: 0.68rem;
+  color: var(--ink-light);
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.mb-service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.mb-service-list::-webkit-scrollbar {
+  display: none;
+}
+
+.mb-service-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--divider);
+  font-size: 0.74rem;
+  color: var(--ink-light);
+}
+
+.mb-service-list li:last-child {
+  border-bottom: none;
+}
+
+.mb-service-list .svc-name {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+.mb-service-list .svc-price {
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* ── Contact ──────────────────────────────────────── */
+.mb-contact-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.mb-contact-body::-webkit-scrollbar {
+  display: none;
+}
+
+.mb-contact-block {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  padding: 10px 12px;
+  flex-shrink: 0;
+}
+
+.mb-contact-block h3 {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 7px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--divider);
+  font-family: var(--font-sans);
+}
+
+.mb-contact-item {
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+  margin-bottom: 5px;
+  font-size: 0.76rem;
+  color: var(--ink-light);
+  line-height: 1.45;
+}
+
+.mb-contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.mb-contact-item .ci-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+/* ── Hours ────────────────────────────────────────── */
+.mb-hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.mb-hours-table tr {
+  border-bottom: 1px dashed var(--divider);
+}
+
+.mb-hours-table td {
+  padding: 6px 3px;
+  color: var(--ink-light);
+}
+
+.mb-hours-table td:first-child {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink);
+}
+
+.mb-hours-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.mb-hours-table tr.today td {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.mb-hours-note {
+  background: rgba(184, 134, 11, 0.08);
+  border-left: 3px solid var(--gold);
+  padding: 8px 10px;
+  font-size: 0.7rem;
+  color: var(--ink-light);
+  font-style: italic;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+/* ── Bottom navigation bar ────────────────────────── */
+.mb-nav {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px 12px;
+  gap: 10px;
+}
+
+.mb-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a1f14, #3d2d1f);
+  border: 1px solid rgba(184, 134, 11, 0.35);
+  color: var(--gold-light);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  line-height: 1;
+  padding: 0;
+}
+
+.mb-nav-btn:hover {
+  background: linear-gradient(135deg, #3a2f24, #4e3d2a);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transform: scale(1.06);
+}
+
+.mb-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.mb-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Dot pagination ───────────────────────────────── */
+.mb-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: calc(100% - 108px);
+}
+
+.mb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(184, 134, 11, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.mb-dot.active {
+  background: var(--gold);
+  width: 18px;
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(184, 134, 11, 0.55);
+}
+
+.mb-dot:hover:not(.active) {
+  background: rgba(184, 134, 11, 0.5);
+}

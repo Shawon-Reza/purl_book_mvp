@@ -1,16 +1,19 @@
 import React, { useEffect, useRef } from "react";
+import useIsMobile from "../book/useIsMobile";
 
 const menuItems = [
-  { label: "Cover",         id: "cover",         icon: "📖" },
-  { label: "About",         id: "about",          icon: "✦",  },
+  { label: "Cover", id: "cover", icon: "📖" },
+  { label: "About", id: "about", icon: "✦", },
   { section: "Services" },
-  { label: "Massage",       id: "massage-pricing", icon: "💆" },
-  { label: "Contact",       id: "contact",         icon: "📞" },
-  { label: "Opening Hours", id: "hours",           icon: "🕐" },
+  { label: "Massage", id: "massage-pricing", icon: "💆" },
+  { label: "Contact", id: "contact", icon: "📞" },
+  { label: "Opening Hours", id: "hours", icon: "🕐" },
 ];
 
 function FloatingNav({ isOpen, onToggle, onNavigate, currentPageId }) {
   const panelRef = useRef(null);
+  const isMobile = useIsMobile(640);
+
 
   // Close on outside click
   useEffect(() => {
@@ -24,11 +27,13 @@ function FloatingNav({ isOpen, onToggle, onNavigate, currentPageId }) {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isOpen, onToggle]);
 
+
   return (
     <div className={`floating-nav${isOpen ? " open" : ""}`} ref={panelRef}>
       {/* Round toggle button */}
       <button
-        className="nav-toggle"
+        // className="nav-toggle"
+        className={isMobile ? " cursor-pointer" : "nav-toggle"}
         onClick={onToggle}
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isOpen}

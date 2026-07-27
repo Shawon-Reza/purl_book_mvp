@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import HTMLFlipBook from "react-pageflip";
 
 import FloatingNav from "../components/FloatingNav";
+import MobileBook from "./MobileBook";
 
 import Cover from "../pages/Cover";
 import About from "../pages/About";
@@ -100,6 +101,11 @@ function Book() {
     navigate(`/${id}`);
     setIsNavOpen(false);
   }, [navigate]);
+
+  // ── Mobile: render the card-carousel instead of the flipbook ──────────────
+  if (isMobile) {
+    return <MobileBook />;
+  }
 
   return (
     <div className="book-wrapper bg-[#EBE7DB]!">
